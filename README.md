@@ -1,36 +1,143 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shean Anika Rojo Javier — Portfolio Website
 
-## Getting Started
+A premium, responsive Next.js portfolio built with TypeScript, Tailwind CSS, Framer Motion, and Lucide React.
 
-First, run the development server:
+## Project Overview
+
+This portfolio is designed to showcase Shean Anika Rojo Javier as a BSIT student, aspiring web developer, and future IT professional.
+
+Sections included:
+- Navbar
+- Hero
+- About
+- Skills
+- Projects
+- Certifications
+- Contact
+- Footer
+
+## Tech Stack
+
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Lucide React
+- Next/Image
+
+## Local Development
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Folder Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/
+  components/
+    About.tsx
+    Certifications.tsx
+    Contact.tsx
+    Footer.tsx
+    Hero.tsx
+    Navbar.tsx
+    Projects.tsx
+    Skills.tsx
+  layout.tsx
+  page.tsx
+  globals.css
+app/lib/
+  data.ts
+  utils.ts
+public/
+  profile/profile.png
+  logo.png
+  certificates/mos-word-badge.svg
+  projects/
+    street-paws.svg
+    infinity-events.svg
+    bagluxe.svg
+    spotgarage.svg
+    ccsfix.svg
+```
 
-## Learn More
+## Update Images and Badge Files
 
-To learn more about Next.js, take a look at the following resources:
+### Replace project images
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The project currently uses SVG placeholders in `public/projects/`:
+- `street-paws.svg`
+- `infinity-events.svg`
+- `bagluxe.svg`
+- `spotgarage.svg`
+- `ccsfix.svg`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To replace them with high-quality PNG or JPG images:
 
-## Deploy on Vercel
+1. Add the new image file to `public/projects/`.
+2. Use the same file name, or update the path in `app/lib/data.ts`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Example:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```ts
+image: '/projects/street-paws.png',
+```
+
+### Replace certification badge
+
+The certification badge uses a placeholder at:
+
+- `public/certificates/mos-word-badge.svg`
+
+Replace it with a real badge image, such as `mos-word-badge.png`, then update `app/lib/data.ts` if you change the file name.
+
+### Replace profile or logo images
+
+Current profile and logo files:
+- `public/profile/profile.png`
+- `public/logo.png`
+
+You can replace these files directly with better quality versions.
+
+## Update Data and Links
+
+All portfolio content is sourced from `app/lib/data.ts`.
+
+Important data includes:
+- `portfolioData` for social links, profile image, and introduction
+- `aboutData` for the about section
+- `skillsData` for skill categories
+- `projectsData` for project cards and links
+- `certifications` for the certification card
+
+## Deployment
+
+Deploy with Vercel for a production-ready experience.
+
+```bash
+npm run build
+npm run start
+```
+
+Then follow Vercel deployment steps or connect the repository on [vercel.com](https://vercel.com).
+
+## Notes
+
+- The site is responsive and built for mobile, tablet, and desktop.
+- The portfolio is ready for review before deployment.
+- Replace placeholder assets with real PNG/JPG files to improve visual polish.
+
+## Extra
+
+If you want, I can also update the portfolio to use real PNG/JPG images the moment you provide them. Simply add the files to `public/projects/` and `public/certificates/`, and I will adjust the data paths accordingly.
