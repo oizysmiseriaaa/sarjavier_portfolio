@@ -9,25 +9,67 @@ import { availability, socials } from "@/lib/data";
 
 type Status = "idle" | "loading" | "success" | "error";
 
+type ContactApiResponse = {
+  success: boolean;
+  message: string;
+};
+
 export default function Contact() {
   const [status, setStatus] = useState<Status>("idle");
+  const [statusMessage, setStatusMessage] = useState("");
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
-    const name = String(form.get("name") ?? "").trim();
-    const email = String(form.get("email") ?? "").trim();
-    const message = String(form.get("message") ?? "").trim();
+
+    if (status === "loading") {
+      return;
+    }
+
+    const formElement = event.currentTarget;
+    const formData = new FormData(formElement);
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const subject = `Portfolio inquiry from ${name}`;
+    const message = String(formData.get("message") ?? "").trim();
 
     if (!name || !email.includes("@") || message.length < 10) {
       setStatus("error");
+      setStatusMessage("Please enter a valid name, email, and message.");
       return;
     }
 
     setStatus("loading");
-    await new Promise((resolve) => setTimeout(resolve, 900));
-    event.currentTarget.reset();
-    setStatus("success");
+    setStatusMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          subject,
+          message,
+        }),
+      });
+
+      const data = (await response.json()) as ContactApiResponse;
+
+      if (!response.ok || !data.success) {
+        setStatus("error");
+        setStatusMessage(data.message || "Failed to send message.");
+        return;
+      }
+
+      formElement.reset();
+      setStatus("success");
+      setStatusMessage(data.message);
+    } catch {
+      setStatus("error");
+      setStatusMessage("Failed to send message.");
+    }
   };
 
   const linkedIn = socials.find((social) => social.label === "LinkedIn")?.href ?? "#";
@@ -109,12 +151,12 @@ export default function Contact() {
 
             {status === "success" ? (
               <p className="mt-5 flex items-center gap-2 rounded-2xl border border-emerald-400/20 bg-emerald-500/10 p-4 text-sm text-emerald-200">
-                <CheckCircle2 size={18} /> Message prepared successfully. I will respond through email.
+                <CheckCircle2 size={18} /> {statusMessage || "Message sent successfully."}
               </p>
             ) : null}
             {status === "error" ? (
               <p className="mt-5 flex items-center gap-2 rounded-2xl border border-red-400/20 bg-red-500/10 p-4 text-sm text-red-200">
-                <XCircle size={18} /> Please enter a valid name, email, and message.
+                <XCircle size={18} /> {statusMessage || "Failed to send message."}
               </p>
             ) : null}
 
@@ -125,9 +167,6 @@ export default function Contact() {
             >
               {status === "loading" ? "Sending..." : "Send Message"} <Send size={17} />
             </button>
-            <p className="mt-4 text-xs leading-6 text-[var(--muted)]">
-              Formspree or EmailJS can be connected by replacing the simulated submit handler with the provider endpoint.
-            </p>
           </motion.form>
         </div>
       </div>

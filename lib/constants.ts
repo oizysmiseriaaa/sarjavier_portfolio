@@ -7,6 +7,7 @@ export const owner = {
   email: "shean.javier.sh@gmail.com",
   phone: "09243768613",
   education: "Bachelor of Science in Information Technology",
+  institution: "Naga College Foundation",
   yearLevel: "2nd Year College Student",
   resume: "/Shean_Anika_Javier_WebDev_Resume.pdf",
   logo: "/logo.png",

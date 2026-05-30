@@ -47,7 +47,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col gap-4 border-t border-[var(--border)] pt-7 text-sm text-[var(--muted)] sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2025 Shean Anika Rojo Javier. All Rights Reserved.</p>
+          <p>© 2026 Shean Anika Rojo Javier. All Rights Reserved.</p>
           <div className="flex items-center gap-4">
             <span>Built with Next.js and Tailwind CSS</span>
             <button

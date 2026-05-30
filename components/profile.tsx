@@ -28,6 +28,7 @@ export default function Profile() {
             <div className="grid gap-4">
               {[
                 { icon: GraduationCap, label: "Education", value: owner.education },
+                { icon: GraduationCap, label: "Institution", value: owner.institution },
                 { icon: BriefcaseBusiness, label: "Level", value: owner.yearLevel },
                 { icon: MapPin, label: "Location", value: owner.location },
               ].map((item) => (

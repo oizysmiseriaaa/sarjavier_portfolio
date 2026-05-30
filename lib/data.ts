@@ -54,7 +54,7 @@ export const timeline = [
   {
     label: "Current",
     title: "BSIT Student",
-    text: "Studying Information Technology while strengthening web development, systems thinking, and professional communication.",
+    text: "Studying Information Technology at Naga College Foundation while strengthening web development, systems thinking, and professional communication.",
   },
   {
     label: "2025",
@@ -72,12 +72,48 @@ export const skills: SkillCategory[] = [
   {
     title: "Frontend Development",
     icon: "Code2",
-    skills: ["HTML", "CSS", "JavaScript"],
+    skills: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "TypeScript (Learning)",
+      "Next.js (Learning)",
+      "Tailwind CSS (Learning)",
+      "Responsive Web Design",
+      "UI Development",
+    ],
+  },
+  {
+    title: "Database & Data Management",
+    icon: "Database",
+    skills: [
+      "Database Fundamentals",
+      "Database Design",
+      "Data Modeling",
+      "SQL Basics",
+      "CRUD Operations",
+      "Data Organization",
+    ],
+  },
+  {
+    title: "Data & Analytics",
+    icon: "BarChart3",
+    skills: [
+      "Power BI",
+      "Data Analytics",
+      "Data Visualization",
+      "Dashboard Development",
+      "Data Interpretation",
+    ],
   },
   {
     title: "Productivity Tools",
     icon: "FileText",
-    skills: ["Microsoft Word", "Microsoft Excel", "Microsoft PowerPoint"],
+    skills: [
+      "Microsoft Word",
+      "Microsoft Excel",
+      "Microsoft PowerPoint",
+    ],
   },
   {
     title: "Design Tools",
@@ -92,18 +128,19 @@ export const skills: SkillCategory[] = [
       "Independent Work",
       "Organization",
       "Adaptability",
+      "Problem Solving",
+      "Attention to Detail",
       "Willingness to Learn",
     ],
   },
 ];
-
 export const featuredProject: Project = {
   title: "CCSFix",
   label: "Featured Academic Project",
   description:
     "A repository-driven academic project focused on practical CCS-related solutions, issue organization, and technology-enabled process improvement.",
   image: "/projects/ccsfix.PNG",
-  technologies: ["HTML", "CSS", "JavaScript", "Academic Project"],
+  technologies: ["HTML", "CSS", "JavaScript","Flask", "Sqlite", "Academic Project"],
   liveDemo: "https://github.com/oizysmiseriaaa/CCSFix",
   github: "https://github.com/oizysmiseriaaa/CCSFix",
   featured: true,
@@ -115,7 +152,7 @@ export const projects: Project[] = [
     description:
       "A pet adoption and animal welfare platform designed to connect rescued animals with potential adopters and promote responsible pet ownership.",
     image: "/projects/street-paws.PNG",
-    technologies: ["HTML", "CSS", "JavaScript", "Responsive UI"],
+    technologies: ["Next.js", "Tailwind CSS", "MySQL", "Responsive UI"],
     liveDemo: "https://street-paws-naga.vercel.app/",
     github: "https://github.com/oizysmiseriaaa",
   },

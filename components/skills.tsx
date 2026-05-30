@@ -1,11 +1,11 @@
 "use client";
 
-import { BadgeCheck, Code2, FileText, PenTool } from "lucide-react";
+import { BadgeCheck, BarChart3, Code2, Database, FileText, PenTool } from "lucide-react";
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/section-heading";
 import { skills } from "@/lib/data";
 
-const icons = { Code2, FileText, PenTool, BadgeCheck };
+const icons = { BadgeCheck, BarChart3, Code2, Database, FileText, PenTool };
 
 export default function Skills() {
   return (
