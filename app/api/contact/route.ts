@@ -22,7 +22,6 @@ type ValidationResult =
 const emailRegex =
   /^(?!\.)(?!.*\.\.)[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+[A-Za-z]{2,63}$/;
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const BACKEND_CONTACT_TIMEOUT_MS = 10000;
 
 function jsonResponse(body: ApiResponse, status: number) {
@@ -202,11 +201,14 @@ export async function POST(request: Request) {
       return backendResponse;
     }
 
-    if (!process.env.RESEND_API_KEY || !process.env.CONTACT_EMAIL) {
+    const resendApiKey = process.env.RESEND_API_KEY;
+
+    if (!resendApiKey || !process.env.CONTACT_EMAIL) {
       console.error("[contact] Missing RESEND_API_KEY or CONTACT_EMAIL.");
       return jsonResponse({ success: false, message: "Failed to send message." }, 500);
     }
 
+    const resend = new Resend(resendApiKey);
     const from = process.env.RESEND_FROM_EMAIL ?? "SARJ Portfolio <onboarding@resend.dev>";
 
     const result = await resend.emails.send({
